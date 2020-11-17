@@ -1,0 +1,19 @@
+{
+  "name": "adonisClient",
+  "version": "1.0.0",
+  "description": "Adonis WebSocket library works on top of [WebSocket protocol](https://tools.ietf.org/html/rfc6455) and uses [ws](https://github.com/websockets/ws) library as the base to build upon.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@adonisjs/websocket-packet": "^1.0.6",
+    "bufferutil": "^4.0.2",
+    "msgpack-lite": "^0.1.26",
+    "utf-8-validate": "^5.0.3",
+    "ws": "^7.4.0"
+  }
+}
