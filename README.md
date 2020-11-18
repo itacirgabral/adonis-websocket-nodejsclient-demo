@@ -5,7 +5,7 @@
 ```
 
 ## Connect
-```javasript
+```javascript
 const token = process.env.JWT_TOKEN
 const ws = new WS(`ws://localhost:3333/adonis-ws?token=${token}`)
 ```
