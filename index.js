@@ -1,55 +1,82 @@
-const ws = require('ws')
+const WS = require('ws')
+const mkMessageswitch = require('./mkMessageswitch')
 
-const client = new ws('ws://localhost:3333/adonis-ws')
+const ws = new WS('ws://localhost:3333/adonis-ws')
+const messageswitch = mkMessageswitch({ ws })
 
-const ping = JSON.stringify({ t: 8 })
-const pinger = () => client.send(ping)
-let pingIntervalId = 0
-
-client.on('close', e => {
+ws.on('close', e => {
   console.log('#########\n# CLOSE #\n#########')
   console.dir(e)
 })
 
-client.on('error', e => {
+ws.on('error', e => {
   console.log('#########\n# ERROR #\n#########')
   console.dir(e)
 })
 
-client.on('message', e => {
+ws.on('message', e => {
   console.log('###########\n# MESSAGE #\n###########')
   console.dir(e)
 
   const { t, d } = JSON.parse(e)
   
-  if (t === 0) {
-    // OPEN
-    const dt = d.clientInterval
-    clearInterval(pingIntervalId)
-    setInterval(pinger, dt)
+  switch (t) {
+    case 0:
+      messageswitch.open(d)
+      break;
+    case 1:
+      messageswitch.join(d)
+      break;
+    case 2:
+      messageswitch.leave(d)
+      break;
+    case 3:
+      messageswitch.joinAck(d)
+      break;
+    case 4:
+      messageswitch.joinError(d)
+      break;
+    case 5:
+      messageswitch.leaveAck(d)
+      break;
+    case 6:
+      messageswitch.leaveError(d)
+      break;
+    case 7:
+      messageswitch.event(d)
+      break;
+    case 8:
+      messageswitch.ping(d)
+      break;
+    case 9:
+      messageswitch.pong(d)
+      break;
+    default:
+      console.log('unknown message type')
+      console.dir({ t, d })
   }
 })
 
-client.on('open', e => {
+ws.on('open', e => {
   console.log('########\n# OPEN #\n########')
 })
 
-client.on('ping', e => {
+ws.on('ping', e => {
   console.log('########\n# PING #\n########')
   console.dir(e)
 })
 
-client.on('pong', e => {
+ws.on('pong', e => {
   console.log('########\n# PONG #\n########')
   console.dir(e)
 })
 
-client.on('unexpected-response', e => {
+ws.on('unexpected-response', e => {
   console.log('#######################\n# UNEXPECTED_RESPONSE #\n#######################')
   console.dir(e)
 })
 
-client.on('upgrade', e => {
+ws.on('upgrade', e => {
   console.log('###########\n# UPGRADE #\n###########')
   console.dir(e)
 })
