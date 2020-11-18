@@ -9,7 +9,7 @@ const mkOpen = ({ ws }) => ({ connId, serverInterval, serverAttempts, clientInte
   console.log(`clientInterval ${dt}`)
 
   clearInterval(pingIntervalId)
-  setInterval(() => ws.send(ping), dt)
+  pingIntervalId = setInterval(() => ws.send(ping), dt)
 
   // JOINT "CHAT" ROOM
   ws.send(joinchat)

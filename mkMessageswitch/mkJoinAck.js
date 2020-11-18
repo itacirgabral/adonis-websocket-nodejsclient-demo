@@ -18,7 +18,7 @@ const mkJoinAck = ({ ws }) => ({ topic }) => {
   if (topic === 'chat') {
     ws.send(falacomigo(n++))
     clearInterval(falacomigoIntervalId)
-    setInterval(() => ws.send(falacomigo(n++)), 10000)
+    falacomigoIntervalId = setInterval(() => ws.send(falacomigo(n++)), 10000)
   }
 }
 
