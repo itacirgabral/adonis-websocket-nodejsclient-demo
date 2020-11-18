@@ -42,7 +42,7 @@ if (topic === 'chat') {
 }
 ```
 
-## on event
+## On event
 ```javascript
 const reply = body => JSON.stringify({
   t: 7,
