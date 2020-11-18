@@ -1,15 +1,19 @@
 {
-  "name": "adonisClient",
+  "name": "adonis-websocket-nodejsclient-demo",
   "version": "1.0.0",
-  "description": "Adonis WebSocket library works on top of [WebSocket protocol](https://tools.ietf.org/html/rfc6455) and uses [ws](https://github.com/websockets/ws) library as the base to build upon.",
+  "description": "ws client setup for adonis",
   "main": "index.js",
   "scripts": {
     "dev": "npx node-dev --clear --respawn -r dotenv/config index.js",
     "start": "node -r dotenv/config index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "keywords": [
+    "websocket",
+    "adonis",
+    "nodejs client"
+  ],
+  "author": "itacirgabral",
+  "license": "MIT",
   "dependencies": {
     "bufferutil": "^4.0.2",
     "dotenv": "^8.2.0",
