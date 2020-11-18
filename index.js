@@ -1,7 +1,9 @@
 const WS = require('ws')
 const mkMessageswitch = require('./mkMessageswitch')
 
-const ws = new WS('ws://localhost:3333/adonis-ws')
+const token = process.env.JWT_TOKEN
+
+const ws = new WS(`ws://localhost:3333/adonis-ws?token=${token}`)
 const messageswitch = mkMessageswitch({ ws })
 
 ws.on('close', e => {

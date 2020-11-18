@@ -4,14 +4,19 @@
   "description": "Adonis WebSocket library works on top of [WebSocket protocol](https://tools.ietf.org/html/rfc6455) and uses [ws](https://github.com/websockets/ws) library as the base to build upon.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "npx node-dev --clear --respawn -r dotenv/config index.js",
+    "start": "node -r dotenv/config index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bufferutil": "^4.0.2",
+    "dotenv": "^8.2.0",
     "utf-8-validate": "^5.0.3",
     "ws": "^7.4.0"
+  },
+  "devDependencies": {
+    "node-dev": "^6.2.0"
   }
 }
