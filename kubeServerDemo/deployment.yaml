@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: adoniswebsocketdemo
+  labels:
+    app: adoniswebsocketdemo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: adoniswebsocketdemo
+  template:
+    metadata:
+      labels:
+        app: adoniswebsocketdemo
+    spec:
+      containers:
+      - name: adoniswebsocketdemo
+        image: 'itacirgabral/adoniswebsocketdemo:0.0.1'
+        ports:
+        - containerPort: 3333

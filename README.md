@@ -64,3 +64,15 @@ if (event === 'message' && topic === 'chat' && data.username !== 'zapguiado') {
   ws.send(reply(message))
 }
 ```
+
+## KUBE
+```bash
+kubectl create deployment adnws --image=itacirgabral/adoniswebsocketdemo:0.0.1
+kubectl expose deployment adnws --type=NodePort --port=3333
+```
+```bash
+kubectl apply -f kubeServerDemo
+```
+```bash
+minikube service --url adoniswebsocketdemo
+```
